@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 260 80% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 280 85% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 260 80% 65%;
+    
+    --radius: 0.75rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(260 80% 65% / 0.2), hsl(280 85% 70% / 0.1));
+    --shadow-glow: 0 0 40px hsl(260 80% 65% / 0.4);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 260 80% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 280 85% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 260 80% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+    cursor: none;
+    position: relative;
+  }
+  
+  .dark body {
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(148, 0, 211, 0.1) 0%, transparent 40%),
+      linear-gradient(135deg, hsl(var(--background)) 0%, hsl(250 50% 10%) 50%, hsl(270 60% 15%) 100%);
+    background-attachment: fixed;
+  }
+  
+  body {
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(var(--background)) 0%, hsl(250 90% 98%) 50%, hsl(270 90% 97%) 100%);
+    background-attachment: fixed;
+  }
+  
+  .dark body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 60%, white, transparent),
+      radial-gradient(2px 2px at 70% 40%, white, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 8s ease-in-out infinite;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  z-index: 2;
+}
+  
+  /* Scroll reveal animation styles - direction aware */
+  section {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  section.revealed[data-direction="up"] {
+    animation: slideInFromTop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  section.revealed[data-direction="down"] {
+    animation: slideInFromBottom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Smooth element animations */
+  .smooth-appear {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .smooth-appear.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  /* Stagger animation for children */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .stagger-children.revealed > *:nth-child(1) { transition-delay: 0.1s; }
+  .stagger-children.revealed > *:nth-child(2) { transition-delay: 0.2s; }
+  .stagger-children.revealed > *:nth-child(3) { transition-delay: 0.3s; }
+  .stagger-children.revealed > *:nth-child(4) { transition-delay: 0.4s; }
+  .stagger-children.revealed > *:nth-child(5) { transition-delay: 0.5s; }
+  .stagger-children.revealed > *:nth-child(6) { transition-delay: 0.6s; }
+  .stagger-children.revealed > *:nth-child(7) { transition-delay: 0.7s; }
+  .stagger-children.revealed > *:nth-child(8) { transition-delay: 0.8s; }
+  
+  .stagger-children.revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Infinite scroll animation */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+  
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+  }
+  
+  .animate-scroll-left:hover {
+    animation-play-state: paused;
+  }
+  
+  /* Super smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    cursor: none;
+  }
+  
+  a, button, input, textarea, select {
+    cursor: none !important;
+  }
+}
