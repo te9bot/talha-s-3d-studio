@@ -14,7 +14,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import LoadingScreen from "@/components/LoadingScreen";
-
+import SplineHero from "@/components/SplineHero";
 import SectionIndicator from "@/components/SectionIndicator";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useKeyboardNavigation } from "@/hooks/useKeyboardNavigation";
@@ -30,7 +30,8 @@ const Index = () => {
   }
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ background: '#050505' }}>
+      <SplineHero />
       <CustomCursor />
       <SectionIndicator
         currentSection={currentSection} 
