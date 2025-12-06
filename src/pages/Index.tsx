@@ -1,29 +1,19 @@
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import Services from "@/components/Services";
-import Skills from "@/components/Skills";
-import Tools from "@/components/Tools";
-import Viewer3D from "@/components/Viewer3D";
-import Photography from "@/components/Photography";
-import Resume from "@/components/Resume";
-import Achievements from "@/components/Achievements";
-import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
+import MinimalNavbar from "@/components/MinimalNavbar";
 import LoadingScreen from "@/components/LoadingScreen";
-import SplineHero from "@/components/SplineHero";
-import SectionIndicator from "@/components/SectionIndicator";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useKeyboardNavigation } from "@/hooks/useKeyboardNavigation";
+import CustomCursor from "@/components/CustomCursor";
+import Rotating3DPhoto from "@/components/Rotating3DPhoto";
+import HeroSection from "@/components/sections/HeroSection";
+import WorkSection from "@/components/sections/WorkSection";
+import AboutSection from "@/components/sections/AboutSection";
+import CTASection from "@/components/sections/CTASection";
+import Footer from "@/components/Footer";
+import { useLenis } from "@/hooks/useLenis";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const { currentSection, totalSections, scrollToSection } = useKeyboardNavigation();
   
-  useScrollReveal();
+  useLenis();
   
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />;
@@ -31,27 +21,20 @@ const Index = () => {
   
   return (
     <div className="min-h-screen" style={{ background: '#050505' }}>
-      <SplineHero />
       <CustomCursor />
-      <SectionIndicator
-        currentSection={currentSection} 
-        totalSections={totalSections}
-        onSectionClick={scrollToSection}
-      />
-      <Navbar />
+      <MinimalNavbar />
+      
       <main>
-        <section id="hero"><Hero /></section>
-        <section id="marquee"><Marquee /></section>
-        <section id="services"><Services /></section>
-        <section id="skills"><Skills /></section>
-        <section id="tools"><Tools /></section>
-        <section id="viewer3d"><Viewer3D /></section>
-        <section id="photography"><Photography /></section>
-        <section id="resume"><Resume /></section>
-        <section id="achievements"><Achievements /></section>
-        <section id="testimonials"><Testimonials /></section>
+        {/* Hero with rotating 3D photo */}
+        <HeroSection />
+        <Rotating3DPhoto />
         
+        {/* Main sections */}
+        <WorkSection />
+        <AboutSection />
+        <CTASection />
       </main>
+      
       <Footer />
     </div>
   );
