@@ -14,7 +14,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import LoadingScreen from "@/components/LoadingScreen";
-import ParticleEffects from "@/components/ParticleEffects";
 import ParticleWaveBackground from "@/components/ParticleWaveBackground";
 import SectionIndicator from "@/components/SectionIndicator";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -34,7 +33,6 @@ const Index = () => {
     <div className="min-h-screen">
       <CustomCursor />
       <ParticleWaveBackground />
-      <ParticleEffects />
       <SectionIndicator
         currentSection={currentSection} 
         totalSections={totalSections}
