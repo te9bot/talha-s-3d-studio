@@ -41,8 +41,8 @@ const projects = [
     image: project6,
   },
   {
-    title: "Abstract 3D Composition",
-    description: "Creative 3D artwork exploring form, composition, and visual storytelling.",
+    title: "Natural Environment with Soft Light",
+    description: "Serene natural landscape showcasing soft diffused lighting and organic environmental elements.",
     image: project7,
   },
   {
@@ -64,32 +64,15 @@ const Works = () => {
         {projects.map((project, index) => (
           <Card 
             key={index}
-            className="group overflow-hidden bg-card/50 backdrop-blur-sm border-border hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-primary/50"
-            style={{
-              transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
-              transition: 'transform 0.5s ease, box-shadow 0.5s ease'
-            }}
-            onMouseMove={(e) => {
-              const card = e.currentTarget;
-              const rect = card.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-              const centerX = rect.width / 2;
-              const centerY = rect.height / 2;
-              const rotateX = (y - centerY) / 10;
-              const rotateY = (centerX - x) / 10;
-              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-            }}
+            className="group overflow-hidden bg-card/50 backdrop-blur-sm border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
           >
             <div className="overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
               <img 
                 src={project.image} 
                 alt={project.title} 
-                className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <CardHeader>
