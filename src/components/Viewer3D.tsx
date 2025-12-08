@@ -10,15 +10,20 @@ const Viewer3D = () => {
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/20 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm hover:shadow-primary/40 transition-shadow duration-500 flex items-center justify-center">
-          <div className="text-center p-8">
-            <div className="text-6xl mb-4">🎥</div>
-            <p className="text-muted-foreground text-lg font-medium">Upload Project Video 1</p>
-            <p className="text-sm text-muted-foreground/70 mt-2">Supported formats: MP4, WebM, MOV</p>
-          </div>
+        {/* YouTube Video 1 */}
+        <div className="w-full aspect-video rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/20 bg-card">
+          <iframe
+            src="https://www.youtube.com/embed/p4o1ss5fiZo"
+            title="Project Video 1"
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
         </div>
         
-        <div className="w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/20 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm hover:shadow-primary/40 transition-shadow duration-500 flex items-center justify-center">
+        {/* Placeholder for Video 2 */}
+        <div className="w-full aspect-video rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/20 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm flex items-center justify-center">
           <div className="text-center p-8">
             <div className="text-6xl mb-4">🎥</div>
             <p className="text-muted-foreground text-lg font-medium">Upload Project Video 2</p>

@@ -4,6 +4,12 @@ import profileImage from "@/assets/profile.jpg";
 
 const roles = ["Visualizer", "Data Analyst", "Esport Athlete", "3D Designer", "Researcher"];
 
+const floatingTags = [
+  { label: "Visualizer", angle: 200, distance: 180 },
+  { label: "Data Analyst", angle: 340, distance: 185 },
+  { label: "Esports", angle: 300, distance: 190 },
+];
+
 const Hero = () => {
   const [stats, setStats] = useState({ years: 0, projects: 0, clients: 0 });
   const [roleIndex, setRoleIndex] = useState(0);
@@ -131,18 +137,55 @@ const Hero = () => {
             </AnimatePresence>
           </div>
           
-          {/* Profile Picture */}
+          {/* Profile Picture with Ring Effect */}
           <motion.div 
             className="relative mt-12 w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
+            {/* Outer rotating ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-spin-slow" />
+            
+            {/* Inner ring with gradient */}
+            <div className="absolute inset-2 rounded-full border-2 border-primary/50" />
+            
+            {/* Glowing ring */}
+            <div className="absolute inset-4 rounded-full border border-primary shadow-[0_0_30px_rgba(139,92,246,0.3)]" />
+            
+            {/* Decorative corner elements */}
+            <div className="absolute top-8 left-8 w-4 h-4 border-l-2 border-t-2 border-primary/60" />
+            <div className="absolute top-8 right-8 w-4 h-4 border-r-2 border-t-2 border-primary/60" />
+            <div className="absolute bottom-8 left-8 w-4 h-4 border-l-2 border-b-2 border-primary/60" />
+            <div className="absolute bottom-8 right-8 w-4 h-4 border-r-2 border-b-2 border-primary/60" />
+            
+            {/* Floating tags */}
+            {floatingTags.map((tag, index) => {
+              const x = Math.cos((tag.angle * Math.PI) / 180) * tag.distance;
+              const y = Math.sin((tag.angle * Math.PI) / 180) * tag.distance;
+              return (
+                <motion.div
+                  key={tag.label}
+                  className="absolute px-4 py-2 bg-background/80 backdrop-blur-sm rounded-full border border-border text-sm font-medium text-foreground shadow-lg"
+                  style={{
+                    left: `calc(50% + ${x}px)`,
+                    top: `calc(50% + ${y}px)`,
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.2 + index * 0.15, duration: 0.4 }}
+                >
+                  {tag.label}
+                </motion.div>
+              );
+            })}
+            
             {/* Profile Image */}
             <img 
               src={profileImage} 
               alt="Talha Zobayed" 
-              className="w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full object-cover border-4 border-primary shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-primary/50"
+              className="w-[240px] h-[240px] md:w-[320px] md:h-[320px] rounded-full object-cover border-4 border-primary shadow-2xl shadow-primary/30"
             />
           </motion.div>
         </div>
